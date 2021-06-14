@@ -21,6 +21,10 @@ const exerciseSchema = new Schema({
     date: {type: Date}
 });
 
+// Create DB models.
+let User = mongoose.model("user", userSchema);
+let Exercise = mongoose.model("excercise", exerciseSchema);
+
 // Listen to port.
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
@@ -31,10 +35,6 @@ app.listen(PORT, () => {
 app.use('/public', express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors({optionsSuccessStatus: 200}));
-
-// Create DB models.
-let User = mongoose.model("user", userSchema);
-let Exercise = mongoose.model("excercise", exerciseSchema);
 
 // Routes.
 app.get('/', (req, res) => {
