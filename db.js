@@ -5,9 +5,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema({
-    description: {type: String},
-    duration: {type: String},
-    date: {type: Date, default: Date.now}
+    userId: {type: String, required: true},
+    description: {type: String, required: true },
+    duration: {type: Number, required: true},
+    date: {type: Date}
 });
 
 const userSchema = new Schema({
@@ -16,7 +17,7 @@ const userSchema = new Schema({
 
 // Create DB models.
 let User = mongoose.model("user", userSchema);
-let Exercise = mongoose.model("excercise", exerciseSchema);
+let Exercise = mongoose.model("exercise", exerciseSchema);
 
 // Export DB models.
 module.exports = {User: User, Exercise: Exercise};

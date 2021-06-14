@@ -31,12 +31,16 @@ const findUsers = (done) => {
 };
 
 const createExercise = (exercise, done) => {
-    User.findOne({_id: exercise._id}, (err, userFound) => {
+    User.findOne({_id: exercise.userId}, (err, userFound) => {
         if(err) return console.error(err);
         if(userFound){
+            let date = new Date();
+            if(exercise.date){
+                date = new Date(exercise.date);
+            }
             let newExercise = new Exercise({
-                _id: exercise._id,
-                date: exercise.date,
+                userId: exercise.userId,
+                date: date,
                 duration: exercise.duration,
                 description: exercise.description
             });
@@ -54,7 +58,7 @@ const findExercises = (userId, query, done) => {
     User.findOne({_id: userId}, (err, userFound)=> {
         if(err) console.error(err);
         if(userFound){
-            let findQuery = Exercise.find({_id: userId});
+            let findQuery = Exercise.find({userId: userId});
             if(query.limit) findQuery.limit(Number(query.limit));
             if(query.from && query.to){
                 let fromDate = new Date(query.from);

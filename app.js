@@ -32,23 +32,27 @@ const getUser = (req, res) => {
 
 const newExercise = (req, res) => {
     let exercise = {
-        _id: req.params._id,
+        userId: req.params._id,
         description: req.body.description,
         duration: req.body.duration,
         date: req.body.date
     };
+    console.log("input date:", exercise.date);
     createExercise(exercise, (err, exercise, user) => {
         if(err) return console.error(err);
         if(exercise != "User does not exist."){
+            console.log("outputdate", exercise.date);
+            console.log(typeof exercise.date)
             res.json({
-                _id: exercise._id,
+                _id: exercise.userId,
                 username: user.user_name,
-                date: exercise.date,
-                duration: exercise.duration,
+                date: exercise.date.toDateString(),
+                duration: Number(exercise.duration),
                 description: exercise.description 
             });
         } else {
             res.send("User does not exist.");
+            console.log("User does not exist.");
         }
     });
 }
@@ -58,7 +62,7 @@ const getExercises = (req, res) => {
     let userId = req.params._id;
     findExercises(userId, query, (err, exercises, user) => {
         if(err) return console.error(err);
-        if(exercises != "No exercises found." || exercises != "User not found."){
+        if(exercises !== "No exercises found." && exercises !== "User not found."){
             res.json({
                 _id: user._id,
                 username: user.user_name,
