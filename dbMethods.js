@@ -50,11 +50,18 @@ const createExercise = (exercise, done) => {
     });
 };
 
-const findExercises = (userId, done) => {
+const findExercises = (userId, query, done) => {
     User.findOne({_id: userId}, (err, userFound)=> {
         if(err) console.error(err);
         if(userFound){
-            Exercise.find({_id: userId}, (err, exercisesFound) => {
+            let findQuery = Exercise.find({_id: userId});
+            if(query.limit) findQuery.limit(Number(query.limit));
+            if(query.from && query.to){
+                let fromDate = new Date(query.from);
+                let toDate = new Date(query.to);
+                findQuery.where('date').gte(fromDate).lte(toDate);
+            }
+            findQuery.exec((err, exercisesFound) => {
                 if(err) return console.error(err);
                 if(exercisesFound){
                     let formattedExercises = exercisesFound.map((exercise) => {

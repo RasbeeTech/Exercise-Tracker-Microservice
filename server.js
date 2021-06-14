@@ -29,4 +29,4 @@ app.get('/', (req, res) => {
 app.post('/api/users', newUser);
 app.get('/api/users', getUser);
 app.post('/api/users/:_id/exercises', newExercise);
-app.get('/api/users/:_id/logs', getExercises);
+app.get('/api/users/:_id/logs?', getExercises);

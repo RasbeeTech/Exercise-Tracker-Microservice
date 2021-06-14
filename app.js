@@ -54,8 +54,9 @@ const newExercise = (req, res) => {
 }
 
 const getExercises = (req, res) => {
+    let query = req.query;
     let userId = req.params._id;
-    findExercises(userId, (err, exercises, user) => {
+    findExercises(userId, query, (err, exercises, user) => {
         if(err) return console.error(err);
         if(exercises != "No exercises found." || exercises != "User not found."){
             res.json({
