@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/public/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exercise Tracker</title>
+  </head>
+  <body>
+      <h1>Exercise Tracker Microservice</h1>
+      <div class="container">
+        <section>
+          <form action="api/users" method="POST">
+            <fieldset class="userNameForm">
+              <h3>Create a new user</h3>
+              <code>POST /api/users</code>
+              <input id="username_input" type="text" placeholder="Username">
+              <input type="submit" value="SUMBIT">
+            </fieldset>
+          </form>
+          <form method="POST">
+            <fieldset class="exerciseForm">
+              <h3>Add exercises</h3>
+              <code>POST /api/users/:_id/exercises</code>
+              <input id="uid" type="text" name=":_id" placeholder=":_id">
+              <input id="desc" type="text" name="description" placeholder="description*">
+              <input id="dur" type="text" name="duration" placeholder="duration* (mins.)">
+              <input id="dur" type="text" name="date" placeholder="date (yyyy-mm-dd)">
+              <input type="submit" value="Submit">
+            </fieldset>
+          </form>
+        </section>
+        <div class="instructions">
+          <h3>How to:</h3>
+          <p>GET user's exercise log: <code>GET /api/users/:_id/logs?[from][&to][&limit]</code></p>
+          <p>[ ] = optional</p>
+          <p>from, to = dates (yyyy-mm-dd); limit = number</p>
+        </div>
+        
+      </div>
+      <hr />
+      <p>
+        Author: 
+        <a href="https://github.com/RasbeeTech/Request-Header-Parser-Microservice">
+            RasbeeTech
+        </a>
+      </p>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+}
+.forms {
+  padding: 20px;
+}
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+code {
+  background-color: lightgreen;
+  font-size: 15px;
+}
+.userNameForm, .exerciseForm {
+  width: 20vw;
+  background-color: lightgrey;
+}
+.instructions {
+  text-align: left;
+}
