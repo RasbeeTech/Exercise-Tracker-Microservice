@@ -37,12 +37,9 @@ const newExercise = (req, res) => {
         duration: req.body.duration,
         date: req.body.date
     };
-    console.log("input date:", exercise.date);
     createExercise(exercise, (err, exercise, user) => {
         if(err) return console.error(err);
         if(exercise != "User does not exist."){
-            console.log("outputdate", exercise.date);
-            console.log(typeof exercise.date)
             res.json({
                 _id: exercise.userId,
                 username: user.user_name,
@@ -52,7 +49,6 @@ const newExercise = (req, res) => {
             });
         } else {
             res.send("User does not exist.");
-            console.log("User does not exist.");
         }
     });
 }
