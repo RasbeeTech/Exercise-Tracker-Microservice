@@ -2,17 +2,21 @@
 Api microservice for tracking excercise
 
 ### Usage:
+Get all users:  
 ```
-Get all users: GET /api/users  
+GET /api/users  
 ```
+Create a new user:  
 ```
-Create a new user: POST /api/users  
+POST /api/users  
 ```
+Create exercise:  
 ```
-Create exercise: POST /api/users/:_id/exercises  
+POST /api/users/:_id/exercises  
 ```
+Get user exercise log:  
 ```
-Get user exercise log: GET /api/users/:_id/logs?[from][&to][&limit]  
+GET /api/users/:_id/logs?[from][&to][&limit]  
 ```
 ### Returns:
 ```
