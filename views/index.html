@@ -14,11 +14,11 @@
             <fieldset class="userNameForm">
               <h3>Create a new user</h3>
               <code>POST /api/users</code>
-              <input id="username_input" type="text" placeholder="Username">
+              <input id="username_input" name="username" type="text" placeholder="Username">
               <input type="submit" value="SUMBIT">
             </fieldset>
           </form>
-          <form method="POST">
+          <form id="exercise-form" method="POST">
             <fieldset class="exerciseForm">
               <h3>Add exercises</h3>
               <code>POST /api/users/:_id/exercises</code>
@@ -26,7 +26,7 @@
               <input id="desc" type="text" name="description" placeholder="description*">
               <input id="dur" type="text" name="duration" placeholder="duration* (mins.)">
               <input id="dur" type="text" name="date" placeholder="date (yyyy-mm-dd)">
-              <input type="submit" value="Submit">
+              <input type="submit" value="SUMBIT">
             </fieldset>
           </form>
         </section>
@@ -45,5 +45,15 @@
             RasbeeTech
         </a>
       </p>
+      <script>
+        const exerciseForm = document.getElementById("exercise-form");
+  
+        exerciseForm.addEventListener("submit", () => {
+          const userId = document.getElementById("uid").value;
+          exerciseForm.action = `/api/users/${userId}/exercises`;
+  
+          exerciseForm.submit();
+        });
+      </script>
   </body>
 </html>
